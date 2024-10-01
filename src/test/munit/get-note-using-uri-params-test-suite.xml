@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="get-note-using-uri-params-test-suite.xml" />
+	<munit:test name="get-note-using-uri-params-test-suite-get:\notes\(id):note_api-configTest" doc:id="f1e5f306-3965-4295-89e5-ffd18d975f4a" description="Test">
+		<munit:execution >
+			<munit:set-event doc:name="Set Event" doc:id="0be74b65-18c7-4df4-9a0d-4518f8ded0b6" >
+				<munit:attributes value='#["uriParams":{"id":"111"}]' />
+			</munit:set-event>
+			<flow-ref doc:name="Flow-ref to get:\notes\(id):note_api-config" doc:id="0e1a6c1f-8798-4c03-8bc0-2dabffe24c47" name="get:\notes\(id):note_api-config"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert that" doc:id="5b82d6de-89fd-4614-a763-6e20ee25908b" expression="#[payload]" is="#[MunitTools::notNullValue()]"/>
+		</munit:validation>
+	</munit:test>
+
+
+</mule>
